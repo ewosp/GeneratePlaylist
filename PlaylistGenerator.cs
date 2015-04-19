@@ -52,6 +52,9 @@ namespace GeneratePlaylist {
 				case PlaylistFormat.M3U8:
 					return this.GetM3U8Playlist();
 
+				case PlaylistFormat.PLS:
+					return this.GetPLSPlaylist();
+
 				default:
 					throw new NotImplementedException("Generate a playlist in this format isn't implemented.");
 			}
@@ -68,6 +71,34 @@ namespace GeneratePlaylist {
 			foreach (string file in files) {
 				sb.AppendLine(file);
 			}
+			return sb.ToString();
+		}
+
+		/// <summary>
+		/// Gets the playlist in PLS format.
+		/// </summary>
+		/// <returns>The playlist in PLS format.</returns>
+		public string GetPLSPlaylist () {
+			//Reference: http://forums.winamp.com/showthread.php?threadid=65772
+			StringBuilder sb = new StringBuilder();
+			sb.AppendLine("[playlist]");
+
+			string[] files = GetMultimediaFiles();
+			int counter = 0;
+			foreach (string file in files) {
+				counter++;
+
+				sb.AppendFormat("File{0}={1}", counter, file);
+				sb.AppendLine();
+
+				sb.AppendFormat("Length{0}=-1", counter);
+				sb.AppendLine();
+			}
+
+			sb.AppendFormat("NumberOfEntries={0}", counter);
+			sb.AppendLine();
+
+			sb.AppendLine("Version=2");
 			return sb.ToString();
 		}
 
