@@ -120,7 +120,7 @@ namespace GeneratePlaylist {
 		/// <param name="directory">The directory where to find multimedia files.</param>
 		/// <param name="lookInSubDirectories">if set to <c>true</c>, looks in subdirectories.</param>
 		/// <returns>
-		/// An array containing themultimedia files found in directory.
+		/// An array containing the multimedia files found in directory.
 		/// </returns>
 		public static string[] GetMultimediaFilesInDirectory (string directory, bool lookInSubDirectories) {
 			HashSet<string> files = new HashSet<string>();
