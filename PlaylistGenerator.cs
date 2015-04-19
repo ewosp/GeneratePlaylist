@@ -58,9 +58,9 @@ namespace GeneratePlaylist {
 		}
 
 		/// <summary>
-		/// Gets the playlist.
+		/// Gets the playlist in UTF-8 extended format.
 		/// </summary>
-		/// <returns>The playlist.</returns>
+		/// <returns>The playlist in UTF-8 extended M3U format.</returns>
 		public string GetM3U8Playlist () {
 			StringBuilder sb = new StringBuilder();
 			sb.AppendLine("#EXTM3U");
