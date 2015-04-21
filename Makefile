@@ -7,7 +7,7 @@ CS=mcs
 
 # Install variables
 PREFIX=/usr/local
-DESTDIR_SHARE=${PREFIX}/share/generate-playlist
+DESTDIR_LIB=${PREFIX}/lib/generate-playlist
 DESTDIR_BIN=${PREFIX}/bin
 SCRIPT_LAUNCHER=${DESTDIR_BIN}/generate-playlist
 
@@ -25,14 +25,14 @@ build/GeneratePlaylist.exe:
 # Install targets
 #
 
-install: install-share install-launcher
+install: install-lib install-launcher
 
-install-share:
-	mkdir -p ${DESTDIR_SHARE} ${DESTDIR_BIN}
-	cp build/GeneratePlaylist.exe ${DESTDIR_SHARE}
+install-lib:
+	mkdir -p ${DESTDIR_LIB} ${DESTDIR_BIN}
+	cp build/GeneratePlaylist.exe ${DESTDIR_LIB}
 
 install-launcher:
-	echo "#!/bin/sh\nmono ${DESTDIR_SHARE}/GeneratePlaylist.exe" > ${SCRIPT_LAUNCHER}
+	echo "#!/bin/sh\nmono ${DESTDIR_LIB}/GeneratePlaylist.exe" > ${SCRIPT_LAUNCHER}
 	chmod +x ${SCRIPT_LAUNCHER}
 
 clean:
